@@ -1,10 +1,8 @@
 import "./App.css";
 import { useState , useEffect } from "react";
-import HeaderApp from "./components/HeaderApp";
-import ShelvesBook from "./components/ShelvesBook";
+import MainPageHome from "./components/MainPageHome";
 import Book from "./components/Book";
 import * as BooksAPI from "./BooksAPI";
-// import {useDebounce} from 'use-debounce';
 import {BrowserRouter as Router, Switch ,Route ,Link} from 'react-router-dom';
 import QueryUsing from "./hook/QueryUsing";
 
@@ -14,35 +12,13 @@ function App() {
   const [bookSearch ,setBookSearch] = QueryUsing(query);
   const [mapOfIdBooks , setMapOfIdBooks] = useState(new Map());
   const [combinedBook , setCombinedBook] = useState([]);
-  // const [value] = useDebounce(query,500);
 
   useEffect(() => {
 BooksAPI.getAll()
 .then(data => {
-  // console.log(data);
   setBooks(data);
   setMapOfIdBooks(creatingMapOfIdBooks(data)); 
 })} , []);
-
-// useEffect(() => {
-//   let active =true;
-//   if(value){
-//     BooksAPI.search(value).then(data => {
-//       if(data.error){
-//          setBookSearch([]);
-//       }else{
-//         if(active){
-//           // console.log(data);
-//           setBookSearch(data);
-//         }
-//       }
-//      })
-//   }
-//   return () => {
-//     active =false ;
-//     setBookSearch([]);
-//   }
-// } , [value]);
 
 useEffect(() => {
   const compineBook = bookSearch.map(book =>{
@@ -110,17 +86,7 @@ return b;
         </Route>
 
          <Route path="/">
-        <div className="list-books">
-         <HeaderApp />
-          <div className="list-books-content">
-           <ShelvesBook books={books} movingBookShelf={movingBookShelf} />
-          </div>
-          <div className="open-search">
-            <Link to="/search">
-            <button>Add a book</button>
-            </Link>
-          </div>
-        </div>
+        <MainPageHome books={books} movingBookShelf={movingBookShelf} />
         </Route>
          </Switch>
         </Router>

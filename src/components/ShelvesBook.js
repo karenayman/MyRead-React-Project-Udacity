@@ -8,9 +8,9 @@ const ShelvesBook = ({books , movingBookShelf}) => {
 
  return (
     <div>
-     <ShelfBooks title="Curruntly Reading" books={curruntlyReadingBooks} movingBookShelf={movingBookShelf} />
-     <ShelfBooks title="Want to read" books={whatToWantBooks} movingBookShelf={movingBookShelf} />
-     <ShelfBooks title="Read" books={readBooks} movingBookShelf={movingBookShelf} />
+     <ShelfBooks section="Curruntly Reading" books={curruntlyReadingBooks} movingBookShelf={movingBookShelf} />
+     <ShelfBooks section="Want to read" books={whatToWantBooks} movingBookShelf={movingBookShelf} />
+     <ShelfBooks section="Read" books={readBooks} movingBookShelf={movingBookShelf} />
     </div>
  )
 }
