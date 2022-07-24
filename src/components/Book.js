@@ -10,7 +10,7 @@ const Book = ({book , changeShelf}) => {
                       backgroundImage: `url(${book.imageLinks.thumbnail})`}}
                   ></div>
                   <div className="book-shelf-changer">
-                    <select defaultValue={book.shelf ? book.shelf : "none"} onChange={(e) => changeShelf(book , e.target.value)} >
+                    <select value={book.shelf ? book.shelf : "none"} onChange={(e) => changeShelf(book , e.target.value)} >
                       <option value="none" disabled>
                         Move to...
                       </option>

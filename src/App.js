@@ -9,9 +9,9 @@ import QueryUsing from "./hook/QueryUsing";
 function App() { 
   const [books , setBooks] =useState([]);
   const [query , setQuery] =useState("");
-  const [bookSearch ,setBookSearch] = QueryUsing(query);
   const [mapOfIdBooks , setMapOfIdBooks] = useState(new Map());
   const [combinedBook , setCombinedBook] = useState([]);
+  const [bookSearch ,setBookSearch] = QueryUsing(query);
 
   useEffect(() => {
 BooksAPI.getAll()
@@ -30,12 +30,6 @@ useEffect(() => {
   })
   setCombinedBook(compineBook);
 } ,[bookSearch]);
- 
-const creatingMapOfIdBooks =(books) => {
- const mapping = new Map();
- books.map(book => mapping.set(book.id, book));
- return mapping;
-}
 
   const movingBookShelf = (book , to) => {
     const movingBooks = books.map(b => {
@@ -51,7 +45,14 @@ return b;
     }
     setBooks(movingBooks);
     BooksAPI.update(book,to);
-  }
+  };
+
+  
+  const creatingMapOfIdBooks =(books) => {
+    const mapping = new Map();
+    books.map(book => mapping.set(book.id, book));
+    return mapping;
+   };
 
  
   return (

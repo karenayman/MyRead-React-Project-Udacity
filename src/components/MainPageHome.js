@@ -1,7 +1,6 @@
 import HeaderApp from "./HeaderApp";
-import ShelvesBook from "./ShelvesBook";
 import {Link} from 'react-router-dom';
-
+import ShelfBooks from "./ShelfBooks";
 
 const MainPageHome =({books , movingBookShelf}) => {
 
@@ -9,7 +8,9 @@ const MainPageHome =({books , movingBookShelf}) => {
         <div className="list-books">
          <HeaderApp />
           <div className="list-books-content">
-           <ShelvesBook books={books} movingBookShelf={movingBookShelf} />
+          <ShelfBooks books={books} movingBookShelf={movingBookShelf} category="currentlyReading" section="Currently Reading" />
+          <ShelfBooks books={books} movingBookShelf={movingBookShelf} category="wantToRead" section="Want To Read" />
+          <ShelfBooks books={books} movingBookShelf={movingBookShelf} category="read" section="Read" />
           </div>
           <div className="open-search">
             <Link to="/search">
