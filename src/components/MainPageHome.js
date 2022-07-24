@@ -1,6 +1,6 @@
 import HeaderApp from "./HeaderApp";
 import ShelvesBook from "./ShelvesBook";
-import {BrowserRouter as Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 const MainPageHome =({books , movingBookShelf}) => {
