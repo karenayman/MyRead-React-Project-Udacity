@@ -32,6 +32,12 @@ useEffect(() => {
   })
   setCombinedBook(compineBook);
 } ,[bookSearch]);
+ 
+const creatingMapOfIdBooks =(books) => {
+  const mapping = new Map();
+  books.map(book => mapping.set(book.id, book));
+  return mapping;
+ };
 
   const movingBookShelf = (book , to) => {
     const movingBooks = books.map(b => {
@@ -49,14 +55,6 @@ return b;
     BooksAPI.update(book,to);
   };
 
-  
-  const creatingMapOfIdBooks =(books) => {
-    const mapping = new Map();
-    books.map(book => mapping.set(book.id, book));
-    return mapping;
-   };
-
- 
   return (
     <div className="app">
       <Router>
