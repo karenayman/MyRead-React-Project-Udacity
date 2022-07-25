@@ -14,11 +14,13 @@ function App() {
   const [bookSearch ,setBookSearch] = QueryUsing(query);
 
   useEffect(() => {
-BooksAPI.getAll()
-.then(data => {
-  setBooks(data);
-  setMapOfIdBooks(creatingMapOfIdBooks(data)); 
-})} , []);
+    const getAllBooks = async () => {
+      const results = await BooksAPI.getAll();
+      setBooks(results);
+      setMapOfIdBooks(creatingMapOfIdBooks(results)); 
+    };
+    getAllBooks();
+  } , []);
 
 useEffect(() => {
   const compineBook = bookSearch.map(book =>{
